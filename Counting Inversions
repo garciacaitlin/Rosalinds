@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class PartialSort {
+
+
+        public static void main(String[] args) {
+            Scanner userInput = new Scanner(System.in);
+            //In in = new In("data.txt");
+            System.out.println("Enter length of array: ");
+            int input= userInput.nextInt();
+            long[] values = new long[input];
+            for (int i = 0; i < values.length; i++)
+            {
+                values[i] = userInput.nextLong();
+            }
+            insertionSort(values);
+    
+        }
+        public static void insertionSort(long values[ ]) {
+            int arrlen = values.length;
+            long invert = 0;
+            for (int i = 0; i < arrlen; i++) {
+                long currentValue = values[i];
+                int compare = i - 1;
+                while (compare >= 0 && values[compare] > currentValue) {
+                    invert++;
+                    values[compare + 1] = values[compare];
+                    compare = compare - 1;
+                }
+                values[compare + 1] = currentValue;
+
+            }
+            System.out.println("INVERT IS: " +invert);
+
+
+
+        }
+}
+
