@@ -1,0 +1,40 @@
+
+import java.util.Scanner;
+import java.util.Arrays;
+public class Median {
+
+    public static void main(String[] args) {
+        Scanner userInput = new Scanner(System.in);
+        System.out.println("Enter length of array: ");
+        int input= userInput.nextInt();
+        int[] values = new int[input];
+        for (int i = 0; i < values.length; i++)
+        {
+            values[i] = userInput.nextInt();
+        }
+        insertionSort(values);
+
+
+        System.out.println("\nWhich value should we choose? ");
+        int choice = userInput.nextInt();
+        System.out.println(values[choice-1]);
+
+
+    }
+    public static void insertionSort (int values[ ]) {
+        int arrlen = values.length;
+        for (int i = 0; i < arrlen; i++) {
+            int currentValue = values[i];
+            int compare = i-1;
+            while (compare >= 0 && values[compare] > currentValue ){
+                values[compare+1] = values[compare];
+                compare = compare -1;
+            }
+            values[compare +1] = currentValue;
+
+        }
+  
+    }
+
+}
+
