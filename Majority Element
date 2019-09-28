@@ -1,0 +1,61 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Arrays;
+public class MajorityElement {
+    public static void main(String[] args) {
+
+        Scanner scan = new Scanner(System.in);
+        System.out.println("How many arrays? ");
+        int k = scan.nextInt();
+        boolean therewasMax = false;
+        System.out.println("Enter length of arrays: ");
+        int n = scan.nextInt();
+
+
+        int[] arrays = new int[n * k];
+        for (int i = 0; i < arrays.length; i++) {
+            arrays[i] = scan.nextInt();
+        }
+
+        for (int i = 1; i <= k; i++) {
+            therewasMax = false;
+            int[] array2 = Arrays.copyOfRange(arrays, (i - 1) * n, i * n);
+
+            Map<Integer, Integer> frequencyMap = new HashMap<>();
+            for (int s : array2) {
+                Integer count = frequencyMap.get(s);
+                if (count == null)
+                    count = 0;
+
+                frequencyMap.put(s, count + 1);
+
+            }
+
+            Integer maxValue = 0;
+            for (Map.Entry<Integer, Integer> entry : frequencyMap.entrySet()) {
+                if (entry.getValue() >= maxValue) {
+                    maxValue = entry.getValue();
+                }
+
+                if (maxValue > n / 2) {
+                    System.out.print(entry.getKey() + " ");
+                    therewasMax = true;
+                    break;
+                }
+
+
+            }
+            if (therewasMax == false) {
+                System.out.print(-1 + " ");
+
+            }
+        }
+    }
+}
+
+
+
+
+
+
