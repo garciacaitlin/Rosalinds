@@ -1,0 +1,26 @@
+import java.util.Scanner;
+public class Fibonacci {
+    public static void main(String[] args) {
+
+
+
+            int[] series = new int[25];
+
+            //create first 2 series elements
+            series[0] = 0;
+            series[1] = 1;
+            series[2] = 1;
+            //create the Fibonacci series and store it in an array
+            for(int i=3; i < 25; i++){
+                series[i] = series[i-1] + series[i-2];
+            }
+
+            System.out.println("Which Fibonacci number would you like?: ");
+            Scanner userInput = new Scanner(System.in);
+            int input = userInput.nextInt();
+            System.out.println(series[input]);
+
+        }
+
+
+}
